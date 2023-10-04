@@ -1,9 +1,36 @@
-// user select a choice
-// computer generate choice
-// check win condition
-// keep the track the score
-// repeat the game until 5 round
-// announce winner
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  let maxRound = 5;
+
+  while (playerScore + computerScore < maxRound) {
+    const round = playRound();
+    if (round.result === "win") {
+      playerScore += 1;
+      console.log(
+        `You win! ${round.playerChoice} beats ${round.computerChoice}`
+      );
+    } else if (round.result === "lose") {
+      computerScore += 1;
+      console.log(
+        `You lose! ${round.computerChoice} beats ${round.playerChoice}`
+      );
+    } else {
+      console.log(`Draw! Your opponent also pick ${round.computerChoice}`);
+    }
+  }
+
+  playerScore > computerScore
+    ? console.log("Game over: You Win!")
+    : console.log("Game over: You Lose!");
+}
+
+function playRound() {
+  const playerChoice = getPlayerChoice();
+  const computerChoice = getComputerChoice();
+  const result = checkWinCondition(playerChoice, computerChoice);
+  return { playerChoice, computerChoice, result };
+}
 
 function getPlayerChoice() {
   while (true) {
@@ -100,7 +127,16 @@ function testCheckWinCondition() {
     : console.log(`Tess fail: rock vs rock should draw, instead ${case9}`);
 }
 
+function testPlayRound() {
+  for (let i = 0; i < 5; i++) {
+    console.log(playRound());
+  }
+}
+
 // uncomment to run test
 // testRandomize();
 // testPlayRound();
 // getPlayerChoice();
+// testPlayRound();
+
+game();
