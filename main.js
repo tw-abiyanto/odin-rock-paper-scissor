@@ -1,3 +1,23 @@
+// user select a choice
+// computer generate choice
+// check win condition
+// keep the track the score
+// repeat the game until 5 round
+// announce winner
+
+function getPlayerChoice() {
+  while (true) {
+    const userChoice = prompt("Enter Rock, Paper, or Scissor:").toLowerCase();
+    if (
+      userChoice === "rock" ||
+      userChoice === "paper" ||
+      userChoice === "scissor"
+    ) {
+      return userChoice;
+    }
+  }
+}
+
 function randomize(arr) {
   const index = Math.floor(Math.random() * arr.length);
   return arr[index];
@@ -82,4 +102,5 @@ function testPlayRound() {
 
 // uncomment to run test
 // testRandomize();
-testPlayRound();
+// testPlayRound();
+// getPlayerChoice();
