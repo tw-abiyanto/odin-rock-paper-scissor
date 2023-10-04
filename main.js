@@ -60,7 +60,7 @@ function testRandomize() {
   return 0;
 }
 
-function testPlayRound() {
+function testCheckWinCondition() {
   const case1 = checkWinCondition("rock", "rock");
   const case2 = checkWinCondition("rock", "paper");
   const case3 = checkWinCondition("rock", "scissor");
